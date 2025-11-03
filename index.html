@@ -415,7 +415,7 @@
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
+                    <h3>Follow Along</h3>
                     <div class="social-links">
                         <a href="https://ca.linkedin.com/in/maharshi-choksi" class="social-link" target="_blank" aria-label="LinkedIn">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -434,7 +434,7 @@
                         </a>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
                     <div class="form-group">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required>
@@ -451,10 +451,14 @@
                         <label for="message" class="form-label">Message</label>
                         <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
                     </div>
+                    <div class="button-group">
                     <button type="submit" class="btn btn-primary btn-full-width">
                         <span class="btn-text">Send Message</span>
-                        <span class="btn-loader" style="display: none;">Sending...</span>
                     </button>
+                    <button type="reset" class="btn btn-primary btn-full-width">
+                        <span class="btn-text">Reset Form</span>
+                    </button>
+                    </div>
                 </form>
             </div>
         </div>

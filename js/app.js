@@ -193,7 +193,7 @@ const projectsData = [
       "Dynamic updates based on live FX rates and leverage parameters"
     ]
   },
-    {// Project 7
+  {// Project 7
     title: "Quantitative Trading & Volatility Modeling Engine",
     description: "A high-performance C# system designed for fast execution of quantitative trading strategies across Forex, Cryptocurrency, Commodities, and Oil markets.",
     fullDescription: "It integrates advanced statistical volatility models (GARCH variants) with classical technical indicators (EMA, MACD) for robust trade signal generation and risk management. This engine retrieves market data from brokers API for precise calculation of potential returns, dynamically calculates conditional volatility forecasts for improved position sizing, and enforces disciplined risk limits. Furthermore this model will dynamically manage open position based on current gains/loss and closes position when risk thresholds are breached, ensuring optimal trade execution in fast-moving markets.",
@@ -262,7 +262,7 @@ viewDetailsButtons.forEach(button => {
     const projectCard = e.target.closest('.project-card');
     const projectIndex = parseInt(projectCard.getAttribute('data-project'));
     const project = projectsData[projectIndex];
-    
+
     let featuresHTML = '';
     if (project.features) {
       featuresHTML = `
@@ -272,7 +272,7 @@ viewDetailsButtons.forEach(button => {
         </ul>
       `;
     }
-    
+
     let techHTML = '';
     if (project.technologies) {
       techHTML = `
@@ -286,7 +286,7 @@ viewDetailsButtons.forEach(button => {
         </div>
       `;
     }
-    
+
     modalBody.innerHTML = `
       <h3>${project.title}</h3>
       <p>${project.description}</p>
@@ -305,7 +305,7 @@ portfolioDetailsButtons.forEach(button => {
   button.addEventListener('click', (e) => {
     const portfolioType = e.target.getAttribute('data-portfolio');
     const portfolio = portfoliosData[portfolioType];
-    
+
     const assetsHTML = portfolio.assets.map(asset => `
       <div style="display: flex; justify-content: space-between; padding: 12px; background: rgba(0, 0, 0, 0.2); border-radius: 8px; margin-bottom: 12px;">
         <div>
@@ -318,7 +318,7 @@ portfolioDetailsButtons.forEach(button => {
         </div>
       </div>
     `).join('');
-    
+
     modalBody.innerHTML = `
       <h3>${portfolio.name}</h3>
       <div style="display: flex; justify-content: space-between; margin: 16px 0; padding: 16px; background: rgba(59, 130, 246, 0.1); border-radius: 12px;">
@@ -358,58 +358,57 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Contact form
+// Contact 
 const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
+const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   const btnText = contactForm.querySelector('.btn-text');
-  const btnLoader = contactForm.querySelector('.btn-loader');
-  const submitBtn = contactForm.querySelector('button[type="submit"]');
-  
+
+  const formData = new FormData(contactForm);
+  formData.append("access_key", "561ade40-5b8d-4af9-8a53-29b7a9b2a4c7");
+
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = "Sending...";
+
   // Show loading state
   btnText.style.display = 'none';
-  btnLoader.style.display = 'inline';
   submitBtn.disabled = true;
-  
-  // Simulate form submission
-  setTimeout(() => {
-    btnText.style.display = 'inline';
-    btnLoader.style.display = 'none';
+
+  const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Request timed out')), ms));
+
+  try {
+    const response = await Promise.race([
+        fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      }),
+      timeout(5000)
+    ]);
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Success! Your message has been sent.");
+      contactForm.reset();
+    } else {
+      alert("Error: " + data.message);
+    }
+
+  } catch (error) {
+    alert("Something went wrong. Please try again.");
+  } finally {
+    submitBtn.textContent = originalText;
     submitBtn.disabled = false;
-    
-    // Show success message in modal
-    modalBody.innerHTML = `
-      <div style="text-align: center; padding: 32px;">
-        <div style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-success-green)" stroke-width="3">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-        </div>
-        <h3 style="margin-bottom: 16px;">Message Sent Successfully!</h3>
-        <p style="color: rgba(255, 255, 255, 0.7);">Thank you for reaching out. I'll get back to you as soon as possible.</p>
-      </div>
-    `;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // Reset form
-    contactForm.reset();
-  }, 2000);
+  }
 });
 
-// Back to top button
-const backToTopBtn = document.getElementById('backToTop');
-backToTopBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
