@@ -111,95 +111,100 @@ fadeElements.forEach(element => {
 
 // Project details data
 const projectsData = [
-  {
-    title: "BTC/ETH Weekly Breakout Bot",
-    description: "Automated cTrader trading bot that detects week starts and executes breakout strategies on Bitcoin and Ethereum. Features fixed $500 per-trade risk management with intelligent lot sizing based on price differences converted to pips.",
-    fullDescription: "This sophisticated trading bot is designed to capitalize on weekly breakout patterns in cryptocurrency markets. It automatically detects the start of each trading week and monitors Bitcoin (BTC) and Ethereum (ETH) for breakout opportunities above previous week's highs or below previous week's lows. The system implements robust risk management with a fixed $500 per-trade risk, calculating optimal lot sizes based on the distance between entry and stop-loss levels. The bot converts cryptocurrency price movements to pip equivalents for precise position sizing, ensuring consistent risk exposure across all trades regardless of market volatility.",
-    technologies: ["C#", "cTrader API", "Technical Analysis", "Risk Management"],
+  {// Project 1
+    title: "Stock Reversal Screener",
+    description: "A dynamic trading tool designed to identify fake breakout for high-potential Futures and Options stocks. The screener applies automatic filters for fakeout signals and securities trading above monthly threshold, helping traders spot reliable breakout and retracement setups.",
+    fullDescription: "With a standardized and user-friendly data format, the platform enables daily actionable insights and lets users customize filters for optimal decision-making. Built with Python and modern web frameworks, the tool leverages technical analysis and API integration for seamless trading workflows",
+    technologies: ["Python", "Streamlit", "Database Management", "Technical Analysis", "API Integration"],
     features: [
-      "Automatic week start detection",
-      "Breakout pattern recognition",
-      "Fixed risk per trade ($500)",
-      "Dynamic lot sizing algorithm",
+      "Automated fakeout and breakout signal detection",
+      "Filters for monthly movers to exclude low-volatility stocks",
+      "Daily updated screener filters for personalized stock search",
+      "Clean, modern UI designed for actionable insights",
       "Price-to-pip conversion system",
-      "Multi-asset support (BTC, ETH)"
+      "Data export functionality for further analysis"
     ]
   },
-  {
-    title: "Z-Score Mean Reversion Strategy",
-    description: "Sophisticated algorithmic trading system combining Z-score statistical analysis with EMA, MACD, and ATR indicators.",
-    fullDescription: "A comprehensive mean reversion trading system that leverages statistical analysis combined with technical indicators to identify high-probability trading opportunities. The strategy uses Z-score calculations to determine when prices have deviated significantly from their mean, while EMA crossovers confirm trend direction, MACD provides momentum signals, and ATR informs position sizing and stop-loss placement. The system includes advanced position sizing algorithms that adjust based on market volatility and account equity, dynamic stop-loss calculations that adapt to changing market conditions, and swing level detection for optimal entry and exit points. This multi-layered approach ensures trades are only taken when multiple confirmation signals align, significantly improving the probability of success.",
-    technologies: ["C#", "cTrader", "Statistical Analysis", "Multiple Indicators"],
+  {// Project 2
+    title: "Stock Reversal TradingView Indicator",
+    description: "A modular TradingView indicator built with Pine Script v6, providing real-time long/short signals, precise entry/exit points aligned with weekly cycle ends.",
+    fullDescription: "The primary indicator automatically identifies and marks previous week's high and low levels on any chart, providing crucial support and resistance levels for trading decisions. The system features automated marking of weekly boundaries with color-coded zones, integration with multi-timeframe analysis to show weekly levels on lower timeframes. All indicators are optimized for performance and can be combined to create comprehensive trading systems.",
+    technologies: ["TradingView charting engine", "PineScript V6", "Statistical Analysis"],
     features: [
-      "Z-score statistical analysis",
-      "EMA/SMA crossover signals",
-      "MACD momentum confirmation",
-      "ATR-based position sizing",
-      "Dynamic stop-loss system",
-      "Swing level detection",
-      "Multi-timeframe analysis"
+      "Real-time long/short signals with entry and exit points",
+      "Weekly OHLC-based trend and fakeout detection",
+      "Customizable labels, colors, and technical overlays",
+      "EMA filter and multiple confirmation options",
+      "Integration with TradingView alerts and backtesting"
     ]
   },
-  {
-    title: "Crypto Options Trading System",
-    description: "Delta Exchange India focused options trading strategies for daily expiry contracts.",
-    fullDescription: "An advanced options trading system specifically designed for the Delta Exchange India platform, focusing on daily expiry cryptocurrency options. The system implements multiple strategies including straddles (simultaneous long call and put positions), butterflies (limited risk spread strategies), and directional call/put positions. Each strategy is optimized for different market scenarios: trending markets favor directional positions, mean-reversion conditions utilize straddles, and range-bound markets benefit from butterfly spreads. The system includes sophisticated tax optimization considerations for Indian traders, automatic position sizing based on account equity, real-time Greeks calculations (Delta, Gamma, Theta, Vega), and expiry management to avoid assignment risks. The platform integrates seamlessly with Delta Exchange API for automated order execution and position monitoring.",
-    technologies: ["Python", "Options Pricing", "Risk Management", "Delta Exchange API"],
+  {// Project 3
+    title: "Large Insider Transactions Searcher Bot",
+    description: "An automated C# solution that scrapes large insider purchase transactions from Dataroma, cleans and aggregates the data, and applies custom filters to highlight significant whale transactions.",
+    fullDescription: "The tool stores daily snapshots in organized text files and sends detailed real-time alerts to a Telegram channel via bot integration. Designed for seamless monitoring of influential securities trades, it enables timely insights directly on your preferred messaging platform.",
+    technologies: ["C#(.NET)", "Telegram API", "Web Scrapping"],
     features: [
-      "Multiple options strategies",
-      "Straddle and butterfly spreads",
-      "Directional call/put positions",
-      "Tax optimization for Indian markets",
-      "Real-time Greeks calculations",
-      "Automatic position sizing",
-      "Expiry management system"
+      "Web scraping insider transaction data",
+      "Robust data cleaning, parsing, and aggregation using DataTable and LINQ",
+      "Custom filtering to identify large 'whale' purchases with configurable thresholds",
+      "Persistent storage of daily transaction reports in timestamped files",
+      "Automated Telegram Bot integration for instant alert notifications",
+      "Retry mechanism and error handling for reliable message delivery"
     ]
   },
-  {
-    title: "Pine Script Technical Indicators",
-    description: "Custom TradingView indicators built in Pine Script v6 for detecting previous week's high and low levels.",
-    fullDescription: "A collection of professional-grade custom indicators developed in Pine Script v6 for the TradingView platform. The primary indicator automatically identifies and marks previous week's high and low levels on any chart, providing crucial support and resistance levels for trading decisions. The system features automated marking of weekly boundaries with color-coded zones, integration with multi-timeframe analysis to show weekly levels on lower timeframes, customizable alert system for price approaching key levels, and visual enhancements including shaded zones and labels. Additional indicators include swing high/low detection, trend strength measurement, and volume profile analysis. All indicators are optimized for performance and can be combined to create comprehensive trading systems.",
-    technologies: ["Pine Script v6", "TradingView", "Technical Analysis", "Chart Patterns"],
+  {// Project 4
+    title: "Dynamic SIP Algo Trading Bot",
+    description: "A sophisticated Python-based SIP (Systematic Investment Plan) algorithmic trading bot tailored for Indian equities and ETFs.",
+    fullDescription: "It dynamically reads configuration from environment files including API keys, ticker symbols, and investment proportions. Every Monday post-market close, it fetches real-time and historical stock data from Yahoo Finance API, analyzes weekly performance, and executes proportional buy orders through broker APIs for tickers that closed lower in the past week. The bot ensures precise quantity allocation, calculates margin requirements, submits orders, and verifies execution success, with detailed step-by-step logging in a .log file for full transparency and auditability",
+    technologies: ["Python", "API", "yfinance", "Real-time Analytics", "Automation", "Data Analysis"],
     features: [
-      "Previous week high/low detection",
-      "Automated level marking",
-      "Multi-timeframe integration",
-      "Custom alert system",
-      "Swing point detection",
-      "Trend strength indicators",
-      "Volume profile analysis"
+      "Configurable environment-driven setup for API credentials, ticker selections, and investment proportions",
+      "Weekly scheduled execution triggered at market close every Monday",
+      "Real-time and historical data retrieval from Yahoo Finance API",
+      "Dynamic order sizing based on predefined proportion of available capital",
+      "Integration with broker APIs for margin calculations, order submission, and execution confirmation",
+      "Comprehensive logging of processes, decisions, and order statuses for traceability",
+      "Error handling to ensure robustness in live trading environments"
     ]
   },
-  {
-    title: "Portfolio Risk Management Dashboard",
-    description: "Real-time portfolio monitoring and risk management system with position sizing calculations.",
-    fullDescription: "A comprehensive portfolio risk management dashboard built with Python and Streamlit, providing real-time monitoring and analysis of trading positions across multiple platforms and asset classes. The system calculates optimal position sizes based on account equity and risk tolerance, manages stop-loss levels with trailing functionality, sets profit targets using risk-reward ratios, and monitors overall portfolio exposure. Features include real-time P&L tracking, correlation analysis between positions, margin utilization monitoring, automated risk alerts via email/SMS, integration with multiple trading platforms (cTrader, Delta Exchange, etc.), historical performance analytics, and advanced reporting with exportable data. The dashboard provides a centralized view of all trading activities, enabling better risk management and decision-making.",
-    technologies: ["Python", "Streamlit", "Database Integration", "Real-time Analytics"],
+  {// Project 5
+    title: "Stock Valuation & Recommendation Engine",
+    description: "A Python-driven analytical tool that filters Indian stocks by market capitalization categories—mega, large, and mid-cap—and evaluates their intrinsic value through comprehensive metrics. ",
+    fullDescription: "The system calculates the fair stock value using the Peter Lynch Valuation (PLV) method, integrates analyst ratings, and compares current market prices to determine if a stock is overvalued, undervalued, or fairly valued. It compiles detailed data including financial ratios, valuation metrics, and recommendations, and exports structured results to Excel for further review.",
+    technologies: ["Python", "Technical Analysis", "Fundamental Analysis", "Data Analysis"],
     features: [
-      "Real-time P&L tracking",
-      "Position sizing calculator",
-      "Stop-loss management",
-      "Profit target optimization",
-      "Portfolio correlation analysis",
-      "Risk exposure monitoring",
-      "Automated alerts system",
-      "Multi-platform integration"
+      "Market cap segmentation",
+      "Incorporates analyst ratings for holistic valuation context",
+      "Computes Peter Lynch Value for intrinsic valuation measurement",
+      "Identifies valuation status (overvalued, undervalued, fairly valued) based on calculated vs. market price",
+      "Generates comprehensive financial and valuation ratios per stock"
     ]
   },
-  {
-    title: "Multi-Timeframe Analysis Tool",
-    description: "Advanced analysis tool using 4-hour time windows to analyze volume patterns and price swings.",
-    fullDescription: "An advanced technical analysis tool that performs comprehensive multi-timeframe analysis using 4-hour time windows as the primary analysis period. The system analyzes volume patterns to identify accumulation and distribution phases, detects price swings using rule-based methods for identifying swing highs and lows, and combines EMA/SMA crossovers for trend confirmation. The tool provides multi-timeframe confirmations by analyzing higher and lower timeframes simultaneously, generates high-probability trade setups when all timeframes align, and includes pattern recognition for chart patterns (triangles, channels, head and shoulders, etc.). Additional features include divergence detection between price and indicators, support/resistance level identification, and automated trade setup notifications. The system helps traders make more informed decisions by providing a complete picture of market structure across multiple timeframes.",
-    technologies: ["Python", "Technical Analysis", "Volume Analysis", "Pattern Recognition"],
+  {// Project 6
+    title: "Forex Calculator Suite",
+    description: "An all-in-one web platform providing essential calculators for Forex traders, including margin requirement, profit/loss, lot size, pip value, and pip size calculators.",
+    fullDescription: "The site dynamically fetches live currency pair data from trusted third-party sources to enable accurate, real-time computations tailored to user's trade parameters. Designed to support traders at all levels, the interface simplifies complex Forex math, promotes smarter risk and position management, and enhances decision-making through clear, actionable outputs.",
+    technologies: ["Python", "Technical Analysis", "API Integration", "Risk & Position Management"],
     features: [
-      "4-hour time window analysis",
-      "Volume pattern recognition",
-      "Swing high/low detection",
-      "EMA/SMA crossover signals",
-      "Multi-timeframe confirmation",
-      "Chart pattern detection",
-      "Divergence analysis",
-      "Automated setup notifications"
+      "Risk management calculations (margin, lot size)",
+      "Profit and loss forecasting",
+      "Computes Peter Lynch Value for intrinsic valuation measurement",
+      "Pip value and pip size determination essential for pip-based instruments",
+      "Dynamic updates based on live FX rates and leverage parameters"
+    ]
+  },
+    {// Project 7
+    title: "Quantitative Trading & Volatility Modeling Engine",
+    description: "A high-performance C# system designed for fast execution of quantitative trading strategies across Forex, Cryptocurrency, Commodities, and Oil markets.",
+    fullDescription: "It integrates advanced statistical volatility models (GARCH variants) with classical technical indicators (EMA, MACD) for robust trade signal generation and risk management. This engine retrieves market data from brokers API for precise calculation of potential returns, dynamically calculates conditional volatility forecasts for improved position sizing, and enforces disciplined risk limits. Furthermore this model will dynamically manage open position based on current gains/loss and closes position when risk thresholds are breached, ensuring optimal trade execution in fast-moving markets.",
+    technologies: ["C#(.NET)", "Maths & Quantitative Finance", "Time Series Analysis", "GARCH Modeling", "Real-Time Data API"],
+    features: [
+      "Market series data retrieval and return calculation for accurate analytics",
+      "Implementation of sophisticated volatility models: GARCH(1,1) (Forex), EGARCH (Crypto), GJR-GARCH (Commodities/Oil)",
+      "Real-time conditional volatility calculation for refined lot-sizing decisions",
+      "Integrated risk management protocols with base (1-2%) and overall portfolio (5-7%) risk constraints",
+      "Continuous position monitoring for prompt trade adjustments and re-entry signals",
+      "Modular design suitable for multi-asset class quantitative trading systems"
     ]
   }
 ];

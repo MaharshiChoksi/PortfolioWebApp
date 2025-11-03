@@ -1,0 +1,12 @@
+.env
+node_modules
+dist
+.vscode
+.DS_Store
+coverage
+.idea
+*.log
+*.tmp
+*.bak
+*holdings.txt
+*Portfolio.txt
