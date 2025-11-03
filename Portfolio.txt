@@ -1,0 +1,28 @@
+// PORTFOLIO
+-- [DONE] Created Streamlit webapp to find the fake breakout equities from indian market (Location: Stock Selection MTF Strategy/V2)
+-- [DONE] Pinescript technical indicator for above project (Location: On Tradingview)
+
+-- [DONE] Dataroma Major Purchase of Securities tracker (Location: Dataroma_Insider_Tracker)
+-- [DONE] Dynamic SIP Algo (Location: SIP)
+-- [DONE] Indian Market Screener which will find securities which are overvalued, undervalued, their true value based on conditions (Location: Indian_Market_Screener)
+	- Finds Peter lynch value, PLV Stage, fair value based on PLV, General insights, analyst rationgs
+
+-- [NOT STARTED] HDFC trading bot
+	Trading Algo which will trace options for banknifty / nifty based on recommendations from the hdfc securities
+	- Invest right Open API for algo development
+	Features:
+		- Dynamically calculate TP/SL if not available on source
+		- Dynamically calculate Lotsize (Min: 1)
+		- Dynamically enter and exit position based on change in recommendation feed
+
+-- [NOT STARTED] Forex Lotsize, Margin, Profit/Loss calculator
+	-- reference use https://www.myfxbook.com/forex-calculators/position-size
+
+-- [INPROGRESS] Swing Price Action Strategy -V4.0
+-- [DONE/NEEDS OPTIMIZATION] Volatility Based Grid Trading
+
+-- [NOT STARTED] Finance Projects from (finance.thomas insta)
+
+
+Complete website by EOD
+Complete HDFC bot by EOD
