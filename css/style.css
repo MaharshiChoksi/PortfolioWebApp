@@ -66,8 +66,8 @@
   --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
 
   /* Common style patterns */
-  --focus-ring: 0 0 0 3px var(--color-focus-ring);
-  --focus-outline: 2px solid var(--color-primary);
+  --focus-ring: 0 0 0 0.1875rem var(--color-focus-ring);
+  --focus-outline: 0.125rem solid var(--color-primary);
   --status-bg-opacity: 0.15;
   --status-border-opacity: 0.25;
   --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -84,15 +84,15 @@
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
     Monaco, Consolas, monospace;
-  --font-size-xs: 11px;
-  --font-size-sm: 12px;
-  --font-size-base: 14px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
-  --font-size-xl: 18px;
-  --font-size-2xl: 20px;
-  --font-size-3xl: 24px;
-  --font-size-4xl: 30px;
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.75rem;
+  --font-size-base: 0.875rem;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.125rem;
+  --font-size-2xl: 1.25rem;
+  --font-size-3xl: 1.5rem;
+  --font-size-4xl: 1.875rem;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 550;
@@ -102,46 +102,44 @@
   --letter-spacing-tight: -0.01em;
 
   /* Spacing */
-  --space-0: 0;
-  --space-1: 1px;
-  --space-2: 2px;
-  --space-4: 4px;
-  --space-6: 6px;
-  --space-8: 8px;
-  --space-10: 10px;
-  --space-12: 12px;
-  --space-16: 16px;
-  --space-20: 20px;
-  --space-24: 24px;
-  --space-32: 32px;
+--space-0: 0;
+--space-1: 0.0625rem;    /* 1px */
+--space-2: 0.125rem;     /* 2px */
+--space-4: 0.25rem;      /* 4px */
+--space-6: 0.375rem;     /* 6px */
+--space-8: 0.5rem;       /* 8px */
+--space-10: 0.625rem;    /* 10px */
+--space-12: 0.75rem;     /* 12px */
+--space-16: 1rem;        /* 16px */
+--space-20: 1.25rem;     /* 20px */
+--space-24: 1.5rem;      /* 24px */
+--space-32: 2rem;        /* 32px */
 
-  /* Border Radius */
-  --radius-sm: 6px;
-  --radius-base: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --radius-full: 9999px;
+/* Border Radius */
+--radius-sm: 0.375rem;   /* 6px */
+--radius-base: 0.5rem;   /* 8px */
+--radius-md: 0.625rem;   /* 10px */
+--radius-lg: 0.75rem;    /* 12px */
+--radius-full: 62.4375rem; /* 9999px */
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
-    0 2px 4px -1px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
-    0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+/* Shadows */
+--shadow-xs: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.02); /* 1px 2px */
+--shadow-sm: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.04), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.02);
+--shadow-md: 0 0.25rem 0.375rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.02);
+--shadow-lg: 0 0.625rem 0.9375rem -0.1875rem rgba(0, 0, 0, 0.04), 0 0.25rem 0.375rem -0.125rem rgba(0, 0, 0, 0.02);
+--shadow-inset-sm: inset 0 0.0625rem 0 rgba(255, 255, 255, 0.15), inset 0 -0.0625rem 0 rgba(0, 0, 0, 0.03);
 
-  /* Animation */
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+/* Animation */
+--duration-fast: 150ms;
+--duration-normal: 250ms;
+--ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Layout */
-  --container-sm: 640px;
-  --container-md: 768px;
-  --container-lg: 1024px;
-  --container-xl: 1280px;
+/* Layout */
+--container-sm: 40rem;    /* 640px */
+--container-md: 48rem;    /* 768px */
+--container-lg: 64rem;    /* 1024px */
+--container-xl: 80rem;    /* 1280px */
+
 }
 
 /* Dark mode colors */
@@ -497,7 +495,7 @@ select.form-control {
   background-image: var(--select-caret-light);
   background-repeat: no-repeat;
   background-position: right var(--space-12) center;
-  background-size: 16px;
+  background-size: 1rem;
   padding-right: var(--space-32);
 }
 
@@ -775,40 +773,40 @@ select.form-control {
   
   /* Typography */
   --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-size-xs: 11px;
-  --font-size-sm: 12px;
-  --font-size-base: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 18px;
-  --font-size-xl: 24px;
-  --font-size-2xl: 32px;
-  --font-size-3xl: 40px;
-  --font-size-4xl: 56px;
-  
+  --font-size-xs: 0.6875rem;  /* 11px */
+  --font-size-sm: 0.75rem;    /* 12px */
+  --font-size-base: 0.875rem; /* 14px */
+  --font-size-md: 1rem;       /* 16px as is */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.5rem;     /* 24px */
+  --font-size-2xl: 2rem;      /* 32px */
+  --font-size-3xl: 2.5rem;    /* 40px */
+  --font-size-4xl: 3.5rem;    /* 56px */
+
   /* Spacing */
-  --space-4: 4px;
-  --space-8: 8px;
-  --space-12: 12px;
-  --space-16: 16px;
-  --space-20: 20px;
-  --space-24: 24px;
-  --space-32: 32px;
-  --space-48: 48px;
-  --space-64: 64px;
-  --space-80: 80px;
-  
+  --space-4: 0.25rem;         /* 4px */
+  --space-8: 0.5rem;          /* 8px */
+  --space-12: 0.75rem;        /* 12px */
+  --space-16: 1rem;           /* 16px */
+  --space-20: 1.25rem;        /* 20px */
+  --space-24: 1.5rem;         /* 24px */
+  --space-32: 2rem;           /* 32px */
+  --space-48: 3rem;           /* 48px */
+  --space-64: 4rem;           /* 64px */
+  --space-80: 5rem;           /* 80px */
+
   /* Border Radius */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
-  
+  --radius-sm: 0.375rem;      /* 6px */
+  --radius-md: 0.75rem;       /* 12px */
+  --radius-lg: 1rem;          /* 16px as is */
+  --radius-xl: 1.5rem;        /* 24px */
+  --radius-full: 9999px;      /* keep as is */
+
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 0.625rem 1.5625rem rgba(0, 0, 0, 0.2), 0 0.25rem 0.625rem rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.3), 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   
   /* Animation */
   --duration-fast: 200ms;
@@ -825,7 +823,7 @@ select.form-control {
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 body {
@@ -1676,74 +1674,6 @@ body {
 textarea.form-control {
   resize: vertical;
   min-height: 120px;
-}
-
-/* Footer */
-.footer {
-  background: rgba(15, 23, 42, 0.8);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: var(--space-48) var(--space-24);
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-32);
-  margin-bottom: var(--space-32);
-}
-
-.footer-section h4 {
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-16);
-  color: var(--color-white);
-}
-
-.footer-section p {
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
-}
-
-.footer-links {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: var(--space-8);
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  transition: color var(--duration-fast) var(--ease);
-}
-
-.footer-links a:hover {
-  color: var(--color-accent-blue);
-}
-
-.footer-social {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8);
-}
-
-.footer-social a {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  transition: color var(--duration-fast) var(--ease);
-}
-
-.footer-social a:hover {
-  color: var(--color-accent-blue);
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: var(--space-24);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .back-to-top {
