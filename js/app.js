@@ -34,7 +34,6 @@ window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
     if (window.scrollY >= sectionTop - 200) {
       current = section.getAttribute('id');
     }
@@ -71,11 +70,6 @@ const animateCounter = (element) => {
   updateCounter();
 };
 
-const observerOptions = {
-  threshold: 0.5,
-  rootMargin: '0px'
-};
-
 const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !countedOnce) {
@@ -83,7 +77,10 @@ const statsObserver = new IntersectionObserver((entries) => {
       countedOnce = true;
     }
   });
-}, observerOptions);
+}, {
+  threshold: 0.5,
+  rootMargin: '0px'
+});
 
 const statsSection = document.querySelector('.stats-grid');
 if (statsSection) {
@@ -91,12 +88,11 @@ if (statsSection) {
 }
 
 // Fade in animation on scroll
-const fadeElements = document.querySelectorAll('.project-card, .portfolio-card, .stat-card, .skills-category');
-
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('fade-in', 'visible');
+      fadeObserver.unobserve(entry.target);
     }
   });
 }, {
@@ -104,259 +100,190 @@ const fadeObserver = new IntersectionObserver((entries) => {
   rootMargin: '0px 0px -100px 0px'
 });
 
-fadeElements.forEach(element => {
-  element.classList.add('fade-in');
-  fadeObserver.observe(element);
-});
+const registerFadeElements = (elements) => {
+  elements.forEach(element => {
+    element.classList.add('fade-in');
+    fadeObserver.observe(element);
+  });
+};
+
+// initial static elements (skills + stats cards)
+registerFadeElements(document.querySelectorAll('.stat-card, .skills-category'));
 
 // Project details data
-const projectsData = [
-  {// Project 1
+const projects = [
+  {
+    id: 0,
     title: "Stock Reversal Screener",
-    description: "A dynamic trading tool designed to identify fake breakout for high-potential Futures and Options stocks. The screener applies automatic filters for fakeout signals and securities trading above monthly threshold, helping traders spot reliable breakout and retracement setups.",
-    fullDescription: "With a standardized and user-friendly data format, the platform enables daily actionable insights and lets users customize filters for optimal decision-making. Built with Python and modern web frameworks, the tool leverages technical analysis and API integration for seamless trading workflows",
-    technologies: ["Python", "Streamlit", "Database Management", "Technical Analysis", "API Integration"],
-    features: [
-      "Automated fakeout and breakout signal detection",
-      "Filters for monthly movers to exclude low-volatility stocks",
-      "Daily updated screener filters for personalized stock search",
-      "Clean, modern UI designed for actionable insights",
-      "Price-to-pip conversion system",
-      "Data export functionality for further analysis"
+    status: "COMPLETED",
+    statusClass: "completed-tag", // or "ongoing-tag"
+    hasExternalLink: true,
+    externalLink: "https://fakeoutscreener.streamlit.app/",
+    externalLinkText: "Checkout Screener",
+    description:
+      "A dynamic trading tool designed to identify fake breakout for high-potential Futures and Options stocks. The screener applies automatic filters for fakeout signals and securities trading above monthly threshold, helping traders spot reliable breakout and retracement setups.",
+    tech: ["Python", "Database Management", "Price Action", "Technical Analysis", "Data Analysis"],
+    metrics: [
+      { label: "Indicators", value: "Price Action" },
+      { label: "Strategy Type", value: "Mean Reversion" },
+      { label: "Assets", value: "NSE Futures & Options" }
     ]
   },
-  {// Project 2
+  {
+    id: 1,
     title: "Stock Reversal TradingView Indicator",
-    description: "A modular TradingView indicator built with Pine Script v6, providing real-time long/short signals, precise entry/exit points aligned with weekly cycle ends.",
-    fullDescription: "The primary indicator automatically identifies and marks previous week's high and low levels on any chart, providing crucial support and resistance levels for trading decisions. The system features automated marking of weekly boundaries with color-coded zones, integration with multi-timeframe analysis to show weekly levels on lower timeframes. All indicators are optimized for performance and can be combined to create comprehensive trading systems.",
-    technologies: ["TradingView charting engine", "PineScript V6", "Statistical Analysis"],
-    features: [
-      "Real-time long/short signals with entry and exit points",
-      "Weekly OHLC-based trend and fakeout detection",
-      "Customizable labels, colors, and technical overlays",
-      "EMA filter and multiple confirmation options",
-      "Integration with TradingView alerts and backtesting"
+    status: "COMPLETED",
+    statusClass: "completed-tag", // or "ongoing-tag"
+    hasExternalLink: true,
+    externalLink: "https://www.tradingview.com/script/ianWN35l-Weekly-Fakeout-Signal-D-W-only/",
+    externalLinkText: "Checkout Indicator",
+    description: "A modular TradingView indicator built with Pine Script v6, providing real-time long/short signals, precise entry/exit points aligned with weekly cycle ends. Users can customize chart labels, colors, and add EMA-based technical confirmations for enhanced reliability. The indicator supports full user control over inputs, allowing adaptation to various trading strategies and increasing confidence in live trading decisions.",
+    tech: ["TradingView", "PineScript V6", "Statistical Analysis"],
+    metrics: [
+      { label: "Indicators", value: "EMA's, Price" },
+      { label: "Strategy Type", value: "Mean Reversion" },
+      { label: "Assets", value: "NSE Futures & Options" }
     ]
   },
-  {// Project 3
+  {
+    id: 2,
     title: "Large Insider Transactions Searcher Bot",
-    description: "An automated C# solution that scrapes large insider purchase transactions from Dataroma, cleans and aggregates the data, and applies custom filters to highlight significant whale transactions.",
-    fullDescription: "The tool stores daily snapshots in organized text files and sends detailed real-time alerts to a Telegram channel via bot integration. Designed for seamless monitoring of influential securities trades, it enables timely insights directly on your preferred messaging platform.",
-    technologies: ["C#(.NET)", "Telegram API", "Web Scrapping"],
-    features: [
-      "Web scraping insider transaction data",
-      "Robust data cleaning, parsing, and aggregation using DataTable and LINQ",
-      "Custom filtering to identify large 'whale' purchases with configurable thresholds",
-      "Persistent storage of daily transaction reports in timestamped files",
-      "Automated Telegram Bot integration for instant alert notifications",
-      "Retry mechanism and error handling for reliable message delivery"
+    status: "COMPLETED",
+    statusClass: "completed-tag", // or "ongoing-tag"
+    hasExternalLink: false,
+    externalLink: "",
+    externalLinkText: "",
+    description: "An automated C# solution that scrapes large insider purchase transactions from Dataroma, cleans and aggregates the data, and applies custom filters to highlight significant whale transactions. The tool stores daily snapshots in organized text files and sends detailed real-time alerts to a Telegram channel via bot integration.",
+    tech: ["C#(.NET)", "Telegram API", "Web Scrapping"],
+    metrics: [
+      { label: "Market", value: "US Equities"},
+      { label: "Source", value: '<a href="https://www.dataroma.com/m/ins/ins.php" target="_blank">Dataroma</a>' },
+      { label: "Data Updates", value: "Daily" }
     ]
   },
-  {// Project 4
+  {
+    id: 3,
     title: "Dynamic SIP Algo Trading Bot",
-    description: "A sophisticated Python-based SIP (Systematic Investment Plan) algorithmic trading bot tailored for Indian equities and ETFs.",
-    fullDescription: "It dynamically reads configuration from environment files including API keys, ticker symbols, and investment proportions. Every Monday post-market close, it fetches real-time and historical stock data from Yahoo Finance API, analyzes weekly performance, and executes proportional buy orders through broker APIs for tickers that closed lower in the past week. The bot ensures precise quantity allocation, calculates margin requirements, submits orders, and verifies execution success, with detailed step-by-step logging in a .log file for full transparency and auditability",
-    technologies: ["Python", "API", "yfinance", "Real-time Analytics", "Automation", "Data Analysis"],
-    features: [
-      "Configurable environment-driven setup for API credentials, ticker selections, and investment proportions",
-      "Weekly scheduled execution triggered at market close every Monday",
-      "Real-time and historical data retrieval from Yahoo Finance API",
-      "Dynamic order sizing based on predefined proportion of available capital",
-      "Integration with broker APIs for margin calculations, order submission, and execution confirmation",
-      "Comprehensive logging of processes, decisions, and order statuses for traceability",
-      "Error handling to ensure robustness in live trading environments"
+    status: "COMPLETED",
+    statusClass: "completed-tag", // or "ongoing-tag"
+    hasExternalLink: false,
+    externalLink: "",
+    externalLinkText: "",
+    description: "A sophisticated Python-based SIP (Systematic Investment Plan) algorithmic trading bot tailored for Indian equities and ETFs. Every Monday post-market close, it fetches real-time and historical stock data from Yahoo Finance API, analyzes weekly performance, and executes proportional buy orders through broker APIs for tickers that closed lower in the past week. The bot ensures precise quantity allocation, calculates margin requirements, submits orders, and verifies execution success, with detailed step-by-step logging in a .log file for full transparency and auditability.",
+    tech: ["Python", "API", "yfinance", "Real-time Analytics", "Automation", "Data Analysis"],
+    metrics: [
+      { label: "Market", value: "India"},
+      { label: "Analysis Time window", value: "Weekly"},
+      { label: "Asset Class", value: "Equities & ETFs"}
     ]
   },
-  {// Project 5
+  {
+    id: 4,
     title: "Stock Valuation & Recommendation Engine",
-    description: "A Python-driven analytical tool that filters Indian stocks by market capitalization categories—mega, large, and mid-cap—and evaluates their intrinsic value through comprehensive metrics. ",
-    fullDescription: "The system calculates the fair stock value using the Peter Lynch Valuation (PLV) method, integrates analyst ratings, and compares current market prices to determine if a stock is overvalued, undervalued, or fairly valued. It compiles detailed data including financial ratios, valuation metrics, and recommendations, and exports structured results to Excel for further review.",
-    technologies: ["Python", "Technical Analysis", "Fundamental Analysis", "Data Analysis"],
-    features: [
-      "Market cap segmentation",
-      "Incorporates analyst ratings for holistic valuation context",
-      "Computes Peter Lynch Value for intrinsic valuation measurement",
-      "Identifies valuation status (overvalued, undervalued, fairly valued) based on calculated vs. market price",
-      "Generates comprehensive financial and valuation ratios per stock"
+    status: "COMPLETED",
+    statusClass: "completed-tag", // or "ongoing-tag"
+    hasExternalLink: false,
+    externalLink: "",
+    externalLinkText: "",
+    description: "A Python-driven analytical tool that filters Indian stocks by market capitalization categories—mega, large, and mid-cap—and evaluates their intrinsic value through comprehensive metrics. The system calculates the fair stock value using the Peter Lynch Valuation (PLV) method, integrates analyst ratings, and compares current market prices to determine if a stock is overvalued, undervalued, or fairly valued. It compiles detailed data including financial ratios, valuation metrics, and recommendations, and exports structured results to Excel for further review.",
+    tech: ["Python", "Technical Analysis", "Fundamental Analysis", "Data Analysis"],
+    metrics: [
+      { label: "Market", value: "India"},
+      { label: "Analysis Time window", value: "Daily"},
+      { label: "Asset Class", value: "Mid → Mega Cap Equities"}
     ]
   },
-  {// Project 6
+  {
+    id: 5,
     title: "Forex Calculator Suite",
-    description: "An all-in-one web platform providing essential calculators for Forex traders, including margin requirement, profit/loss, lot size, pip value, and pip size calculators.",
-    fullDescription: "The site dynamically fetches live currency pair data from trusted third-party sources to enable accurate, real-time computations tailored to user's trade parameters. Designed to support traders at all levels, the interface simplifies complex Forex math, promotes smarter risk and position management, and enhances decision-making through clear, actionable outputs.",
-    technologies: ["Python", "Technical Analysis", "API Integration", "Risk & Position Management"],
-    features: [
-      "Risk management calculations (margin, lot size)",
-      "Profit and loss forecasting",
-      "Computes Peter Lynch Value for intrinsic valuation measurement",
-      "Pip value and pip size determination essential for pip-based instruments",
-      "Dynamic updates based on live FX rates and leverage parameters"
-    ]
+    status: "COMPLETED",
+    statusClass: "completed-tag", // or "ongoing-tag"
+    hasExternalLink: true,
+    externalLink: "https://forex-tools.streamlit.app/",
+    externalLinkText: "Checkout Tools",
+    description: "An all-in-one web platform providing essential calculators for Forex traders, including margin requirement, profit/loss, lot size, pip value, and pip size calculators. The site dynamically fetches live currency pair data from trusted third-party sources to enable accurate, real-time computations tailored to user's trade parameters.",
+    tech: ["Python", "Technical Analysis", "API Integration", "Risk & Position Management", "Fundamental Analysis"],
+    metrics: [
+      { label: "Asset Class", value: "Forex, Commodity"},
+      { label: "Data Update Window", value: "Real-Time"},
+      { label: "Analysis Type", value: "Forecasting Risk/Profit/Position Size/values"}
+    ]    
   },
-  {// Project 7
+  {
+    id: 6,
     title: "Quantitative Trading & Volatility Modeling Engine",
-    description: "A high-performance C# system designed for fast execution of quantitative trading strategies across Forex, Cryptocurrency, Commodities, and Oil markets.",
-    fullDescription: "It integrates advanced statistical volatility models (GARCH variants) with classical technical indicators (EMA, MACD) for robust trade signal generation and risk management. This engine retrieves market data from brokers API for precise calculation of potential returns, dynamically calculates conditional volatility forecasts for improved position sizing, and enforces disciplined risk limits. Furthermore this model will dynamically manage open position based on current gains/loss and closes position when risk thresholds are breached, ensuring optimal trade execution in fast-moving markets.",
-    technologies: ["C#(.NET)", "Maths & Quantitative Finance", "Time Series Analysis", "GARCH Modeling", "Real-Time Data API"],
-    features: [
-      "Market series data retrieval and return calculation for accurate analytics",
-      "Implementation of sophisticated volatility models: GARCH(1,1) (Forex), EGARCH (Crypto), GJR-GARCH (Commodities/Oil)",
-      "Real-time conditional volatility calculation for refined lot-sizing decisions",
-      "Integrated risk management protocols with base (1-2%) and overall portfolio (5-7%) risk constraints",
-      "Continuous position monitoring for prompt trade adjustments and re-entry signals",
-      "Modular design suitable for multi-asset class quantitative trading systems"
+    status: "ONGOING",
+    statusClass: "ongoing-tag", // or "ongoing-tag"
+    hasExternalLink: false,
+    externalLink: "",
+    externalLinkText: "",
+    description: "A high-performance C# system designed for fast execution of quantitative trading strategies across Forex, Cryptocurrency, Commodities, and Oil markets. It integrates advanced statistical volatility models (GARCH variants) with classical technical indicators (EMA, MACD) for robust trade signal generation and risk management. This engine retrieves market data from brokers API for precise calculation of potential returns, dynamically calculates conditional volatility forecasts for improved position sizing, and enforces disciplined risk limits. Furthermore this model will dynamically manage open position based on current gains/loss and closes position when risk thresholds are breached, ensuring optimal trade execution in fast-moving markets.",
+    tech: ["C#(.NET)", "Maths & Quantitative Finance", "Time Series Analysis", "GARCH Modeling", "Real-Time Data API"],
+    metrics: [
+      { label: "Asset Class", value: "Forex, Commodity"},
+      { label: "Data Update Window", value: "Real-Time Fast Execution"},
+      { label: "Analysis Type", value: "Multi-Model Analysis & volatility Forecasting"}
     ]
   }
 ];
 
-// Portfolio details data
-const portfoliosData = {
-  crypto: {
-    name: "Crypto Portfolio",
-    description: "Diversified cryptocurrency portfolio with focus on major assets and promising altcoins. The portfolio is rebalanced monthly to maintain target allocations and capture emerging opportunities in the crypto market.",
-    value: "$50,000",
-    performance: "+25.5%",
-    assets: [
-      { name: "Bitcoin (BTC)", allocation: 40, value: "$20,000", change: "+22.3%" },
-      { name: "Ethereum (ETH)", allocation: 30, value: "$15,000", change: "+28.7%" },
-      { name: "Altcoins", allocation: 30, value: "$15,000", change: "+26.4%" }
-    ],
-    strategy: "Long-term hold strategy with active rebalancing and tactical trading on breakouts. Focus on top-tier cryptocurrencies with strong fundamentals and emerging DeFi projects."
-  },
-  equity: {
-    name: "Equity Portfolio",
-    description: "Indian stock market investments focused on defense, railway, and banking sectors. Strategic allocation to benefit from government infrastructure spending and economic growth.",
-    value: "₹15,00,000",
-    performance: "+18.3%",
-    assets: [
-      { name: "Defense Stocks", allocation: 35, value: "₹5,25,000", change: "+24.1%" },
-      { name: "Railway Stocks", allocation: 35, value: "₹5,25,000", change: "+16.8%" },
-      { name: "Banking Stocks", allocation: 30, value: "₹4,50,000", change: "+14.2%" }
-    ],
-    strategy: "Sector rotation strategy focusing on government capex beneficiaries. Regular monitoring of policy changes and quarterly rebalancing based on sectoral performance."
-  },
-  options: {
-    name: "Options Portfolio",
-    description: "Options trading strategies across multiple market conditions and timeframes. Utilizing delta-neutral strategies and directional plays based on market analysis.",
-    value: "$25,000",
-    performance: "+32.7%",
-    assets: [
-      { name: "Call Options", allocation: 40, value: "$10,000", change: "+38.5%" },
-      { name: "Put Options", allocation: 35, value: "$8,750", change: "+28.3%" },
-      { name: "Spreads", allocation: 25, value: "$6,250", change: "+30.1%" }
-    ],
-    strategy: "Multi-strategy approach combining directional plays with delta-neutral strategies. Focus on daily expiry options with strict risk management and profit-taking discipline."
-  }
-};
+// Dynamic project card render
+const projectsGrid = document.getElementById('projectsGrid');
 
-// Modal functionality
-const modal = document.getElementById('modal');
-const modalBody = document.getElementById('modalBody');
-const modalClose = document.getElementById('modalClose');
-const modalOverlay = document.querySelector('.modal-overlay');
+if (projectsGrid && Array.isArray(projects)) {
+  const cardsHtml = projects.map((p) => {
+    const techBadges = (p.tech || [])
+      .map(t => `<span class="tech-badge">${t}</span>`)
+      .join('');
 
-// View Details buttons for projects
-const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
-viewDetailsButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    const projectCard = e.target.closest('.project-card');
-    const projectIndex = parseInt(projectCard.getAttribute('data-project'));
-    const project = projectsData[projectIndex];
+      const metricsHtml = (p.metrics || [])
+        .map(m => `
+          <div class="metric">
+            <span class="metric-label">${m.label}</span>
+            <span class="metric-value">${m.value}</span>
+          </div>
+        `)
+        .join('');
 
-    let featuresHTML = '';
-    if (project.features) {
-      featuresHTML = `
-        <h4 style="color: var(--color-accent-blue); margin-top: 24px; margin-bottom: 12px;">Key Features:</h4>
-        <ul style="margin-left: 20px; color: rgba(255, 255, 255, 0.8);">
-          ${project.features.map(feature => `<li style="margin-bottom: 8px;">${feature}</li>`).join('')}
-        </ul>
-      `;
-    }
+      const externalLinkHtml = p.hasExternalLink
+        ? `
+          <div class="about-tags url-link">
+            <a href="${p.externalLink}" class="tag" target="_blank" rel="noopener noreferrer">
+              ${p.externalLinkText}
+            </a>
+          </div>
+        `
+        : '';
 
-    let techHTML = '';
-    if (project.technologies) {
-      techHTML = `
-        <div style="margin-top: 24px;">
-          <h4 style="color: var(--color-accent-blue); margin-bottom: 12px;">Technologies:</h4>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            ${project.technologies.map(tech => `
-              <span style="padding: 6px 12px; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 6px; font-size: 12px; color: var(--color-accent-purple);">${tech}</span>
-            `).join('')}
+      return `
+        <div class="project-card" data-project="${p.id}">
+          <div class="project-header">
+            <h3 class="project-title">${p.title}</h3>
+            <span class="${p.statusClass}">${p.status}</span>
+          </div>
+
+          ${externalLinkHtml}
+
+          <div class="project-body">
+            <p class="project-description">${p.description}</p>
+
+            <div class="project-tech">
+              ${techBadges}
+            </div>
+
+            <div class="project-metrics">
+              ${metricsHtml}
+            </div>
           </div>
         </div>
       `;
-    }
+  }).join('');
 
-    modalBody.innerHTML = `
-      <h3>${project.title}</h3>
-      <p>${project.description}</p>
-      ${project.fullDescription ? `<p style="margin-top: 16px;">${project.fullDescription}</p>` : ''}
-      ${featuresHTML}
-      ${techHTML}
-    `;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
-});
+  projectsGrid.innerHTML = cardsHtml;
 
-// Portfolio details buttons
-const portfolioDetailsButtons = document.querySelectorAll('.portfolio-details-btn');
-portfolioDetailsButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    const portfolioType = e.target.getAttribute('data-portfolio');
-    const portfolio = portfoliosData[portfolioType];
-
-    const assetsHTML = portfolio.assets.map(asset => `
-      <div style="display: flex; justify-content: space-between; padding: 12px; background: rgba(0, 0, 0, 0.2); border-radius: 8px; margin-bottom: 12px;">
-        <div>
-          <div style="font-weight: 600; margin-bottom: 4px;">${asset.name}</div>
-          <div style="font-size: 14px; color: rgba(255, 255, 255, 0.6);">${asset.allocation}% allocation</div>
-        </div>
-        <div style="text-align: right;">
-          <div style="font-weight: 600; margin-bottom: 4px;">${asset.value}</div>
-          <div style="font-size: 14px; color: var(--color-success-green);">${asset.change}</div>
-        </div>
-      </div>
-    `).join('');
-
-    modalBody.innerHTML = `
-      <h3>${portfolio.name}</h3>
-      <div style="display: flex; justify-content: space-between; margin: 16px 0; padding: 16px; background: rgba(59, 130, 246, 0.1); border-radius: 12px;">
-        <div>
-          <div style="font-size: 14px; color: rgba(255, 255, 255, 0.6); margin-bottom: 4px;">Total Value</div>
-          <div style="font-size: 24px; font-weight: 700; color: var(--color-accent-blue);">${portfolio.value}</div>
-        </div>
-        <div style="text-align: right;">
-          <div style="font-size: 14px; color: rgba(255, 255, 255, 0.6); margin-bottom: 4px;">Performance</div>
-          <div style="font-size: 24px; font-weight: 700; color: var(--color-success-green);">${portfolio.performance}</div>
-        </div>
-      </div>
-      <p style="margin: 16px 0;">${portfolio.description}</p>
-      <h4 style="color: var(--color-accent-blue); margin: 24px 0 12px 0;">Asset Allocation:</h4>
-      ${assetsHTML}
-      <h4 style="color: var(--color-accent-blue); margin: 24px 0 12px 0;">Investment Strategy:</h4>
-      <p style="color: rgba(255, 255, 255, 0.8);">${portfolio.strategy}</p>
-    `;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
-});
-
-// Close modal
-const closeModal = () => {
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-};
-
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', closeModal);
-
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modal.classList.contains('active')) {
-    closeModal();
-  }
-});
+  // hook new cards into fade-in
+  registerFadeElements(projectsGrid.querySelectorAll('.project-card'));
+}
 
 // Contact 
 const contactForm = document.getElementById('contactForm');
