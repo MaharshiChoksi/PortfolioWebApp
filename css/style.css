@@ -497,6 +497,7 @@ select.form-control {
   background-position: right var(--space-12) center;
   background-size: 1rem;
   padding-right: var(--space-32);
+  background-color: var(--color-card-bg);
 }
 
 /* Add a dark mode specific caret */
