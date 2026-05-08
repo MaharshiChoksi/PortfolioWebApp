@@ -238,7 +238,7 @@ const projects = [
     metrics: [
       { label: "Asset Class", value: "Forex, Commodity, Oil, Crypto, Index"},
       { label: "Data Update Window", value: "User Friendly"},
-      { label: "Supported Data", value: "CSV file, Parquet file, from MT5, MT4, Ducascopy or other sources..."}
+      { label: "Supported Data", value: "CSV file, Parquet file, from MT5, MT4, Dukascopy or other sources..."}
     ]
   }
 ];
