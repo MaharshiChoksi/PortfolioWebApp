@@ -224,6 +224,22 @@ const projects = [
       { label: "Data Update Window", value: "Real-Time Fast Execution"},
       { label: "Analysis Type", value: "Multi-Model Analysis & volatility Forecasting"}
     ]
+  },
+  {
+    id: 7,
+    title: "Backtest.OS",
+    status: "COMPLETED",
+    statusClass: "completed-tag", // or "ongoing-tag"
+    hasExternalLink: true,
+    externalLink: "https://backtestos.vercel.app/",
+    externalLinkText: "Backtesting Engine",
+    description: "It's a browser-based backtesting platform that lets you replay market data, simulate trades, and see exactly how your strategy would've performed. Think of it as a practice range for traders—load some historical price data, set up your trading rules, and watch how your trades would have played out over multi-timeframe.",
+    tech: ["HTML", "CSS", "Javascript", "Project Management", "Financial Metrics Dashboard"],
+    metrics: [
+      { label: "Asset Class", value: "Forex, Commodity, Oil, Crypto, Index"},
+      { label: "Data Update Window", value: "User Friendly"},
+      { label: "Supported Data", value: "CSV file, Parquet file, from MT5, MT4, Ducascopy or other sources..."}
+    ]
   }
 ];
 
