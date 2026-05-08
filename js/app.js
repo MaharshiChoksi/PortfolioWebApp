@@ -209,24 +209,24 @@ const projects = [
       { label: "Analysis Type", value: "Forecasting Risk/Profit/Position Size/values"}
     ]    
   },
+  // {
+  //   id: 6,
+  //   title: "Quantitative Trading & Volatility Modeling Engine",
+  //   status: "ONGOING",
+  //   statusClass: "ongoing-tag", // or "ongoing-tag"
+  //   hasExternalLink: false,
+  //   externalLink: "",
+  //   externalLinkText: "",
+  //   description: "A high-performance C# system designed for fast execution of quantitative trading strategies across Forex, Cryptocurrency, Commodities, and Oil markets. It integrates advanced statistical volatility models (GARCH variants) with classical technical indicators (EMA, MACD) for robust trade signal generation and risk management. This engine retrieves market data from brokers API for precise calculation of potential returns, dynamically calculates conditional volatility forecasts for improved position sizing, and enforces disciplined risk limits. Furthermore this model will dynamically manage open position based on current gains/loss and closes position when risk thresholds are breached, ensuring optimal trade execution in fast-moving markets.",
+  //   tech: ["C#(.NET)", "Maths & Quantitative Finance", "Time Series Analysis", "GARCH Modeling", "Real-Time Data API"],
+  //   metrics: [
+  //     { label: "Asset Class", value: "Forex, Commodity"},
+  //     { label: "Data Update Window", value: "Real-Time Fast Execution"},
+  //     { label: "Analysis Type", value: "Multi-Model Analysis & volatility Forecasting"}
+  //   ]
+  // },
   {
     id: 6,
-    title: "Quantitative Trading & Volatility Modeling Engine",
-    status: "ONGOING",
-    statusClass: "ongoing-tag", // or "ongoing-tag"
-    hasExternalLink: false,
-    externalLink: "",
-    externalLinkText: "",
-    description: "A high-performance C# system designed for fast execution of quantitative trading strategies across Forex, Cryptocurrency, Commodities, and Oil markets. It integrates advanced statistical volatility models (GARCH variants) with classical technical indicators (EMA, MACD) for robust trade signal generation and risk management. This engine retrieves market data from brokers API for precise calculation of potential returns, dynamically calculates conditional volatility forecasts for improved position sizing, and enforces disciplined risk limits. Furthermore this model will dynamically manage open position based on current gains/loss and closes position when risk thresholds are breached, ensuring optimal trade execution in fast-moving markets.",
-    tech: ["C#(.NET)", "Maths & Quantitative Finance", "Time Series Analysis", "GARCH Modeling", "Real-Time Data API"],
-    metrics: [
-      { label: "Asset Class", value: "Forex, Commodity"},
-      { label: "Data Update Window", value: "Real-Time Fast Execution"},
-      { label: "Analysis Type", value: "Multi-Model Analysis & volatility Forecasting"}
-    ]
-  },
-  {
-    id: 7,
     title: "Backtest.OS",
     status: "COMPLETED",
     statusClass: "completed-tag", // or "ongoing-tag"
