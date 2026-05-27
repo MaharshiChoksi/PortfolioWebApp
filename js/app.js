@@ -113,75 +113,42 @@ registerFadeElements(document.querySelectorAll('.stat-card, .skills-category'));
 // Project details data
 const projects = [
   {
-    id: 0,
-    title: "Stock Reversal Screener",
+    id: 6,
+    title: "Backtest.OS",
     status: "COMPLETED",
-    statusClass: "completed-tag", // or "ongoing-tag"
+    statusClass: "completed-tag",
     hasExternalLink: true,
-    externalLink: "https://fakeoutscreener.streamlit.app/",
-    externalLinkText: "Checkout Screener",
-    description:
-      "A dynamic trading tool designed to identify fake breakout for high-potential Futures and Options stocks. The screener applies automatic filters for fakeout signals and securities trading above monthly threshold, helping traders spot reliable breakout and retracement setups.",
-    tech: ["Python", "Database Management", "Price Action", "Technical Analysis", "Data Analysis"],
+    externalLink: "https://backtestos.vercel.app/",
+    externalLinkText: "Backtesting Engine",
+    description: "It's a browser-based backtesting platform that lets you replay market data, simulate trades, and see exactly how your strategy would've performed. Think of it as a practice range for traders—load some historical price data, set up your trading rules, and watch how your trades would have played out over multi-timeframe.",
+    tech: ["HTML", "CSS", "Javascript", "Project Management", "Financial Metrics Dashboard"],
     metrics: [
-      { label: "Indicators", value: "Price Action" },
-      { label: "Strategy Type", value: "Mean Reversion" },
-      { label: "Assets", value: "NSE Futures & Options" }
+      { label: "Asset Class", value: "Forex, Commodity, Oil, Crypto, Index"},
+      { label: "Data Update Window", value: "User Friendly"},
+      { label: "Supported Data", value: "CSV file, Parquet file, from MT5, MT4, Dukascopy or other sources..."}
     ]
   },
   {
-    id: 1,
-    title: "Stock Reversal TradingView Indicator",
+    id: 5,
+    title: "Forex Calculator Suite",
     status: "COMPLETED",
-    statusClass: "completed-tag", // or "ongoing-tag"
+    statusClass: "completed-tag",
     hasExternalLink: true,
-    externalLink: "https://www.tradingview.com/script/ianWN35l-Weekly-Fakeout-Signal-D-W-only/",
-    externalLinkText: "Checkout Indicator",
-    description: "A modular TradingView indicator built with Pine Script v6, providing real-time long/short signals, precise entry/exit points aligned with weekly cycle ends. Users can customize chart labels, colors, and add EMA-based technical confirmations for enhanced reliability. The indicator supports full user control over inputs, allowing adaptation to various trading strategies and increasing confidence in live trading decisions.",
-    tech: ["TradingView", "PineScript V6", "Statistical Analysis"],
+    externalLink: "https://forex-tools.streamlit.app/",
+    externalLinkText: "Checkout Tools",
+    description: "An all-in-one web platform providing essential calculators for Forex traders, including margin requirement, profit/loss, lot size, pip value, and pip size calculators. The site dynamically fetches live currency pair data from trusted third-party sources to enable accurate, real-time computations tailored to user's trade parameters.",
+    tech: ["Python", "Technical Analysis", "API Integration", "Risk & Position Management", "Fundamental Analysis"],
     metrics: [
-      { label: "Indicators", value: "EMA's, Price" },
-      { label: "Strategy Type", value: "Mean Reversion" },
-      { label: "Assets", value: "NSE Futures & Options" }
-    ]
-  },
-  {
-    id: 2,
-    title: "Large Insider Transactions Searcher Bot",
-    status: "COMPLETED",
-    statusClass: "completed-tag", // or "ongoing-tag"
-    hasExternalLink: false,
-    externalLink: "",
-    externalLinkText: "",
-    description: "An automated C# solution that scrapes large insider purchase transactions from Dataroma, cleans and aggregates the data, and applies custom filters to highlight significant whale transactions. The tool stores daily snapshots in organized text files and sends detailed real-time alerts to a Telegram channel via bot integration.",
-    tech: ["C#(.NET)", "Telegram API", "Web Scrapping"],
-    metrics: [
-      { label: "Market", value: "US Equities"},
-      { label: "Source", value: '<a href="https://www.dataroma.com/m/ins/ins.php" target="_blank">Dataroma</a>' },
-      { label: "Data Updates", value: "Daily" }
-    ]
-  },
-  {
-    id: 3,
-    title: "Dynamic SIP Algo Trading Bot",
-    status: "COMPLETED",
-    statusClass: "completed-tag", // or "ongoing-tag"
-    hasExternalLink: false,
-    externalLink: "",
-    externalLinkText: "",
-    description: "A sophisticated Python-based SIP (Systematic Investment Plan) algorithmic trading bot tailored for Indian equities and ETFs. Every Monday post-market close, it fetches real-time and historical stock data from Yahoo Finance API, analyzes weekly performance, and executes proportional buy orders through broker APIs for tickers that closed lower in the past week. The bot ensures precise quantity allocation, calculates margin requirements, submits orders, and verifies execution success, with detailed step-by-step logging in a .log file for full transparency and auditability.",
-    tech: ["Python", "API", "yfinance", "Real-time Analytics", "Automation", "Data Analysis"],
-    metrics: [
-      { label: "Market", value: "India"},
-      { label: "Analysis Time window", value: "Weekly"},
-      { label: "Asset Class", value: "Equities & ETFs"}
-    ]
+      { label: "Asset Class", value: "Forex, Commodity"},
+      { label: "Data Update Window", value: "Real-Time"},
+      { label: "Analysis Type", value: "Forecasting Risk/Profit/Position Size/values"}
+    ]    
   },
   {
     id: 4,
     title: "Stock Valuation & Recommendation Engine",
     status: "COMPLETED",
-    statusClass: "completed-tag", // or "ongoing-tag"
+    statusClass: "completed-tag",
     hasExternalLink: false,
     externalLink: "",
     externalLinkText: "",
@@ -194,51 +161,68 @@ const projects = [
     ]
   },
   {
-    id: 5,
-    title: "Forex Calculator Suite",
+    id: 3,
+    title: "Dynamic SIP Algo Trading Bot",
     status: "COMPLETED",
-    statusClass: "completed-tag", // or "ongoing-tag"
-    hasExternalLink: true,
-    externalLink: "https://forex-tools.streamlit.app/",
-    externalLinkText: "Checkout Tools",
-    description: "An all-in-one web platform providing essential calculators for Forex traders, including margin requirement, profit/loss, lot size, pip value, and pip size calculators. The site dynamically fetches live currency pair data from trusted third-party sources to enable accurate, real-time computations tailored to user's trade parameters.",
-    tech: ["Python", "Technical Analysis", "API Integration", "Risk & Position Management", "Fundamental Analysis"],
+    statusClass: "completed-tag",
+    hasExternalLink: false,
+    externalLink: "",
+    externalLinkText: "",
+    description: "A sophisticated Python-based SIP (Systematic Investment Plan) algorithmic trading bot tailored for Indian equities and ETFs. Every Monday post-market close, it fetches real-time and historical stock data from Yahoo Finance API, analyzes weekly performance, and executes proportional buy orders through broker APIs for tickers that closed lower in the past week. The bot ensures precise quantity allocation, calculates margin requirements, submits orders, and verifies execution success, with detailed step-by-step logging in a .log file for full transparency and auditability.",
+    tech: ["Python", "API", "yfinance", "Real-time Analytics", "Automation", "Data Analysis"],
     metrics: [
-      { label: "Asset Class", value: "Forex, Commodity"},
-      { label: "Data Update Window", value: "Real-Time"},
-      { label: "Analysis Type", value: "Forecasting Risk/Profit/Position Size/values"}
-    ]    
+      { label: "Market", value: "India"},
+      { label: "Analysis Time window", value: "Weekly"},
+      { label: "Asset Class", value: "Equities & ETFs"}
+    ]
   },
-  // {
-  //   id: 6,
-  //   title: "Quantitative Trading & Volatility Modeling Engine",
-  //   status: "ONGOING",
-  //   statusClass: "ongoing-tag", // or "ongoing-tag"
-  //   hasExternalLink: false,
-  //   externalLink: "",
-  //   externalLinkText: "",
-  //   description: "A high-performance C# system designed for fast execution of quantitative trading strategies across Forex, Cryptocurrency, Commodities, and Oil markets. It integrates advanced statistical volatility models (GARCH variants) with classical technical indicators (EMA, MACD) for robust trade signal generation and risk management. This engine retrieves market data from brokers API for precise calculation of potential returns, dynamically calculates conditional volatility forecasts for improved position sizing, and enforces disciplined risk limits. Furthermore this model will dynamically manage open position based on current gains/loss and closes position when risk thresholds are breached, ensuring optimal trade execution in fast-moving markets.",
-  //   tech: ["C#(.NET)", "Maths & Quantitative Finance", "Time Series Analysis", "GARCH Modeling", "Real-Time Data API"],
-  //   metrics: [
-  //     { label: "Asset Class", value: "Forex, Commodity"},
-  //     { label: "Data Update Window", value: "Real-Time Fast Execution"},
-  //     { label: "Analysis Type", value: "Multi-Model Analysis & volatility Forecasting"}
-  //   ]
-  // },
   {
-    id: 6,
-    title: "Backtest.OS",
+    id: 2,
+    title: "Large Insider Transactions Searcher Bot",
     status: "COMPLETED",
-    statusClass: "completed-tag", // or "ongoing-tag"
-    hasExternalLink: true,
-    externalLink: "https://backtestos.vercel.app/",
-    externalLinkText: "Backtesting Engine",
-    description: "It's a browser-based backtesting platform that lets you replay market data, simulate trades, and see exactly how your strategy would've performed. Think of it as a practice range for traders—load some historical price data, set up your trading rules, and watch how your trades would have played out over multi-timeframe.",
-    tech: ["HTML", "CSS", "Javascript", "Project Management", "Financial Metrics Dashboard"],
+    statusClass: "completed-tag",
+    hasExternalLink: false,
+    externalLink: "",
+    externalLinkText: "",
+    description: "An automated C# solution that scrapes large insider purchase transactions from Dataroma, cleans and aggregates the data, and applies custom filters to highlight significant whale transactions. The tool stores daily snapshots in organized text files and sends detailed real-time alerts to a Telegram channel via bot integration.",
+    tech: ["C#(.NET)", "Telegram API", "Web Scrapping"],
     metrics: [
-      { label: "Asset Class", value: "Forex, Commodity, Oil, Crypto, Index"},
-      { label: "Data Update Window", value: "User Friendly"},
-      { label: "Supported Data", value: "CSV file, Parquet file, from MT5, MT4, Dukascopy or other sources..."}
+      { label: "Market", value: "US Equities"},
+      { label: "Source", value: '<a href="https://www.dataroma.com/m/ins/ins.php" target="_blank">Dataroma</a>' },
+      { label: "Data Updates", value: "Daily" }
+    ]
+  },
+  {
+    id: 1,
+    title: "Stock Reversal TradingView Indicator",
+    status: "COMPLETED",
+    statusClass: "completed-tag",
+    hasExternalLink: true,
+    externalLink: "https://www.tradingview.com/script/ianWN35l-Weekly-Fakeout-Signal-D-W-only/",
+    externalLinkText: "Checkout Indicator",
+    description: "A modular TradingView indicator built with Pine Script v6, providing real-time long/short signals, precise entry/exit points aligned with weekly cycle ends. Users can customize chart labels, colors, and add EMA-based technical confirmations for enhanced reliability. The indicator supports full user control over inputs, allowing adaptation to various trading strategies and increasing confidence in live trading decisions.",
+    tech: ["TradingView", "PineScript V6", "Statistical Analysis"],
+    metrics: [
+      { label: "Indicators", value: "EMA's, Price" },
+      { label: "Strategy Type", value: "Mean Reversion" },
+      { label: "Assets", value: "NSE Futures & Options" }
+    ]
+  },
+  {
+    id: 0,
+    title: "Stock Reversal Screener",
+    status: "COMPLETED",
+    statusClass: "completed-tag",
+    hasExternalLink: true,
+    externalLink: "https://fakeoutscreener.streamlit.app/",
+    externalLinkText: "Checkout Screener",
+    description:
+      "A dynamic trading tool designed to identify fake breakout for high-potential Futures and Options stocks. The screener applies automatic filters for fakeout signals and securities trading above monthly threshold, helping traders spot reliable breakout and retracement setups.",
+    tech: ["Python", "Database Management", "Price Action", "Technical Analysis", "Data Analysis"],
+    metrics: [
+      { label: "Indicators", value: "Price Action" },
+      { label: "Strategy Type", value: "Mean Reversion" },
+      { label: "Assets", value: "NSE Futures & Options" }
     ]
   }
 ];
