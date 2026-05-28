@@ -121,7 +121,7 @@ const projects = [
     externalLink: "https://backtestos.vercel.app/",
     externalLinkText: "Backtesting Engine",
     description: "It's a browser-based backtesting platform that lets you replay market data, simulate trades, and see exactly how your strategy would've performed. Think of it as a practice range for traders—load some historical price data, set up your trading rules, and watch how your trades would have played out over multi-timeframe.",
-    tech: ["HTML", "CSS", "Javascript", "Project Management", "Financial Metrics Dashboard"],
+    tech: ["React", "Vite", "Zustand", "Tradingview Lightweight Charts", "Financial Metrics Dashboard"],
     metrics: [
       { label: "Asset Class", value: "Forex, Commodity, Oil, Crypto, Index"},
       { label: "Data Update Window", value: "User Friendly"},
